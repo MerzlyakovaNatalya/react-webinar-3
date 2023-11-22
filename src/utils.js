@@ -26,3 +26,8 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+// Генерация чисел
+export const generator = () => {
+  return generator.value ? ++generator.value : generator.value = 1
+}
