@@ -1,0 +1,16 @@
+.Total {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.Total-wrap-text {
+  white-space: nowrap;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.Total-total {
+  font-weight: bold;
+}

@@ -40,48 +40,54 @@ class Store {
     for (const listener of this.listeners) listener();
   }
 
-  /**
-   * Добавление новой записи
-   */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
-    })
-  };
+  addToBasket(code) {
+    let sum = 0;
+    let product = false;
+    const list = this.getState().basket.list.map(item => {
+      let copyItem = item;
+      
+      if (item.code === code) {
+        product = true;
+        copyItem = {...item, amount: item.amount + 1}
+      }
+      sum += copyItem.price * copyItem.amount;
+      return copyItem;
+    });
 
-  /**
-   * Удаление записи по коду
-   * @param code
-   */
-  deleteItem(code) {
-    this.setState({
-      ...this.state,
-      // Новый список, в котором не будет удаляемой записи
-      list: this.state.list.filter(item => item.code !== code)
-    })
-  };
+      if(!product) {
+        const item = this.getState().list.find(item => item.code === code);
+        list.push({...item, amount: 1});
+        sum += item.price;
+      }
 
-  /**
-   * Выделение записи по коду
-   * @param code
-   */
-  selectItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
-          return {
-            ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
-          };
+      this.setState({
+        ...this.state,
+        basket: {
+          ...this.state.basket,
+          list,
+          sum,
+          amount: list.length
         }
-        // Сброс выделения если выделена
-        return item.selected ? {...item, selected: false} : item;
       })
-    })
+  }
+
+  removeFromBasket(code) {
+    let sum = 0;
+    const list = this.getState().basket.list.filter(item => {
+      if (item.code === code) return false;
+      sum += item.price * item.amount;
+      return true;
+    });
+
+    this.setState({
+      ...this.state,
+      basket: {
+        ...this.state.basket,
+        list,
+        sum,
+        amount: list.length
+      }
+    });
   }
 }
 
