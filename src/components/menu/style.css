@@ -1,0 +1,12 @@
+.Menu {
+    padding-left: 20px;
+}
+
+.Menu-item {
+    list-style-type: none;
+}
+
+.Menu-link {
+    font-size: 18px;
+    color: rgba(0, 135, 233, 1);
+}

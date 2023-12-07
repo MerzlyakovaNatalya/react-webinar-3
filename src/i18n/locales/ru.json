@@ -1,0 +1,20 @@
+{
+    "title": "Магазин",
+    "main": "Главная",
+    "inBasket": "В корзине",
+    "basket_title": "Корзина",
+    "basket_open": "Перейти",
+    "basket_close": "Закрыть",
+    "basket_empty": "пусто",
+    "product_add": "Добавить",
+    "basket_total": "Итого",
+    "basket_unit": "шт",
+    "basket_delete": "Удалить",
+    "filter_reset": "Сбросить",
+    "basket_products": {
+      "one": "товар",
+      "few": "товара",
+      "many": "товаров",
+      "other": "товара"
+    }
+  }

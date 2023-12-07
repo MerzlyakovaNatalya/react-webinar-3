@@ -1,0 +1,16 @@
+.SideLayout {
+  display: flex;
+  align-items: center;
+}
+
+.SideLayout_side_between{
+  justify-content: space-between;
+}
+
+.SideLayout_side_start {
+  justify-content: flex-start;
+}
+
+.SideLayout_side_end {
+  justify-content: flex-end;
+}

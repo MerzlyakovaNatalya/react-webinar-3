@@ -19,6 +19,16 @@
   padding: 20px 10px;
 }
 
+.Item-link {
+  text-decoration: none;
+  color: black;
+}
+
+.Item-link:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 .Item-actions {
   padding: 20px 20px 20px 10px;
   display: flex;

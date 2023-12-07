@@ -4,22 +4,18 @@ import {cn as bem} from '@bem-react/classname';
 import {numberFormat, plural} from "../../utils";
 import './style.css';
 
-function BasketTool({sum, amount, onOpen}) {
+function BasketTool({sum, amount, onOpen, basketProducts, inBasket, basket_open}) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
-      <span className={cn('label')}>В корзине:</span>
+      <span className={cn('label')}>{inBasket}:</span>
       <span className={cn('total')}>
         {amount
-          ? `${amount} ${plural(amount, {
-            one: 'товар',
-            few: 'товара',
-            many: 'товаров'
-          })} / ${numberFormat(sum)} ₽`
+          ? `${amount} ${basketProducts} / ${numberFormat(sum)} ₽`
           : `пусто`
         }
       </span>
-      <button onClick={onOpen}>Перейти</button>
+      <button onClick={onOpen}>{basket_open}</button>
     </div>
   );
 }
@@ -27,7 +23,10 @@ function BasketTool({sum, amount, onOpen}) {
 BasketTool.propTypes = {
   onOpen: PropTypes.func.isRequired,
   sum: PropTypes.number,
-  amount: PropTypes.number
+  amount: PropTypes.number,
+  basketProducts: PropTypes.node,
+  inBasket: PropTypes.string,
+  basket_open: PropTypes.string,
 };
 
 BasketTool.defaultProps = {

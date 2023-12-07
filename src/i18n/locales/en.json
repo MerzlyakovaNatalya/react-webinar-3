@@ -1,0 +1,18 @@
+{
+    "title": "Shop",
+    "main": "Main",
+    "inBasket": "In cart",
+    "basket_title": "Cart",
+    "basket_open": "Open",
+    "basket_close": "Close",
+    "basket_empty": "empty",
+    "product_add": "Add",
+    "basket_total": "Total",
+    "basket_unit": "pcs",
+    "basket_delete": "Delete",
+    "filter_reset": "Reset",
+    "basket_products": {
+      "one": "article",
+      "other": "articles"
+    }
+  }
