@@ -1,4 +1,5 @@
-import {memo, useCallback} from 'react';
+import {memo, useCallback, useContext} from 'react';
+import {I18nContext} from "../../context/i18ncontext";
 import ItemBasket from "../../components/item-basket";
 import List from "../../components/list";
 import ModalLayout from "../../components/modal-layout";
@@ -9,6 +10,7 @@ import useSelector from "../../store/use-selector";
 function Basket() {
 
   const store = useStore();
+  const {t} = useContext(I18nContext)
 
   const select = useSelector(state => ({
     list: state.basket.list,
@@ -29,15 +31,15 @@ function Basket() {
                 item={item} 
                 onRemove={callbacks.removeFromBasket} 
                 link={`/products/${item._id}`}
-                onLinck={callbacks.closeModal}
+                onLink={callbacks.closeModal}
              />
     }, [callbacks.removeFromBasket]),
   };
 
   return (
-    <ModalLayout title='Корзина' onClose={callbacks.closeModal}>
+    <ModalLayout title={t('basket_title')} onClose={callbacks.closeModal} basket_close={t('basket_close')}>
       <List list={select.list} renderItem={renders.itemBasket}/>
-      <BasketTotal sum={select.sum}/>
+      <BasketTotal sum={select.sum} basket_total={t('basket_total')}/>
     </ModalLayout>
   );
 }

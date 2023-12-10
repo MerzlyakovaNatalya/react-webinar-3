@@ -4,7 +4,7 @@ import {cn as bem} from '@bem-react/classname';
 import {numberFormat} from "../../utils";
 import './style.css';
 
-function ProductCard({product, onAdd}) {
+function ProductCard({product, onAdd, product_add}) {
   
   const cn = bem('ProductCard');
 
@@ -15,7 +15,7 @@ function ProductCard({product, onAdd}) {
       <p className={cn('category')}>Категория: <b>{product?.category?.title}</b></p>
       <p className={cn('year')}>Год выпуска: <b>{product?.edition}</b></p>
       <p className={cn('price')}>Цена:&nbsp;&nbsp;{numberFormat(product?.price)} ₽</p>
-      <button className={cn('addButton')} onClick={() => onAdd(product._id)}>Добавить</button>
+      <button className={cn('addButton')} onClick={() => onAdd(product._id)}>{product_add}</button>
     </div>
   );
 }
@@ -23,6 +23,7 @@ function ProductCard({product, onAdd}) {
 ProductCard.propTypes = {
   product: PropTypes.object,
   onAdd: PropTypes.func.isRequired,
+  product_add: PropTypes.string
 };
 
 ProductCard.defaultProps = {
