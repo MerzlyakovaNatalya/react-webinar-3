@@ -23,7 +23,7 @@ function Item(props) {
       </div>
       <div className={cn('actions')}>
         <div className={cn('price')}>{numberFormat(props.item.price)} ₽</div>
-        <button onClick={callbacks.onAdd}>{t('product_add')}</button>
+        <button className={cn('button')} onClick={callbacks.onAdd}>{t('product_add')}</button>
       </div>
     </div>
   );
