@@ -1,0 +1,10 @@
+.LoginForm {
+    padding: 20px;
+  }
+  
+  .LoginForm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+  }
