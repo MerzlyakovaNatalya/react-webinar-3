@@ -1,6 +1,5 @@
-import {memo, useEffect} from 'react';
+import {memo} from 'react';
 import {useNavigate} from "react-router-dom";
-import useStore from "../../hooks/use-store";
 import useSelector from "../../hooks/use-selector";
 import useInit from '../../hooks/use-init';
 import Navigation from "../../containers/navigation";
@@ -11,16 +10,17 @@ import ProfileCard from "../../components/profile-card";
 import TopMenu from '../../containers/top-menu';
 
 function Profile() {
-  const store = useStore();
-
-  useInit(() => {
-    store.actions.login.checkAuth()
-  }, []);
+  const navigate = useNavigate();
 
   const select = useSelector(state => ({
     user: state.login.user,
     status: state.login.status,
+    token: state.login.token
   }));
+
+  useInit(() => {
+    if(!select.token) navigate(-1)
+  }, [select.token]);
 
   return (
     <PageLayout>

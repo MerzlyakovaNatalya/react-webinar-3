@@ -8,7 +8,7 @@ class LoginState extends StoreModule {
   initState() {
     return {
       user: {},
-      token: null,
+      token: localStorage.getItem('token') || null,
       error: null,
       status: false,
       waiting: false
@@ -123,15 +123,15 @@ class LoginState extends StoreModule {
     });
   }
 
-//   /**
-//    * Сброс состояния login (сброс ошибки)
-//    */
-//   reset() {
-//     this.setState({
-//       ...this.getState(),
-//       error: '',
-//     }, 'Состояние авторизации сброшено (сброс значения ошибки)');
-//   }
+  /**
+   * Сброс состояния login (сброс ошибки)
+   */
+  reset() {
+    this.setState({
+      ...this.getState(),
+      error: '',
+    }, 'Состояние авторизации сброшено (сброс значения ошибки)');
+  }
 }
 
 export default LoginState;

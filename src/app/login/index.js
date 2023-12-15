@@ -34,6 +34,7 @@ function Login() {
   }
 
   useEffect(() => {
+    store.actions.login.reset()
     if(select.status) {
     const back = location.state?.come_back && location.pathname !== location.state?.come_back
         ? location.state?.come_back

@@ -27,7 +27,7 @@ function TopMenu({}) {
   console.log('select.status', select.status)
   return (
     <SideLayout side="end" padding="small">
-      {select.status ? <Link to="profile">{select.user?.profile.name}</Link> : ''}
+      {select.status ? <Link to="/profile">{select.user?.profile.name}</Link> : ''}
       {select.status
         ? <button onClick={callbacks.onSignOut}>Выход</button>
         : <button onClick={callbacks.onSignIn}>Вход</button>}
