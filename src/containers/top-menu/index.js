@@ -24,7 +24,7 @@ function TopMenu({}) {
       store.actions.login.signOut();
     }, [])
   } 
-  console.log('select.status', select.status)
+  
   return (
     <SideLayout side="end" padding="small">
       {select.status ? <Link to="/profile">{select.user?.profile.name}</Link> : ''}

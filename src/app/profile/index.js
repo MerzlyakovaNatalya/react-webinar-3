@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import {useNavigate} from "react-router-dom";
+import useStore from "../../hooks/use-store";
 import useSelector from "../../hooks/use-selector";
 import useInit from '../../hooks/use-init';
 import Navigation from "../../containers/navigation";
@@ -10,17 +11,16 @@ import ProfileCard from "../../components/profile-card";
 import TopMenu from '../../containers/top-menu';
 
 function Profile() {
-  const navigate = useNavigate();
+  const store = useStore()
 
   const select = useSelector(state => ({
-    user: state.login.user,
-    status: state.login.status,
-    token: state.login.token
+    profile: state.profile.data,
+    waiting: state.profile.waiting
   }));
 
   useInit(() => {
-    if(!select.token) navigate(-1)
-  }, [select.token]);
+    store.actions.profile.load();
+  }, []);
 
   return (
     <PageLayout>
@@ -29,7 +29,7 @@ function Profile() {
         <LocaleSelect/>
       </Head>
       <Navigation/>
-      <ProfileCard user={select.user}/>
+        <ProfileCard user={select.profile}/>
     </PageLayout>
   );
 }

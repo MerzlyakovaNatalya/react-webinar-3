@@ -8,6 +8,7 @@ import Login from "./login";
 import useStore from '../hooks/use-store';
 import useInit from '../hooks/use-init';
 import Profile from './profile';
+import Access from '../containers/access'
 
 /**
  * Приложение
@@ -28,7 +29,7 @@ function App() {
         <Route path={''} element={<Main/>}/>
         <Route path={'/articles/:id'} element={<Article/>}/>
         <Route path={'/login'} element={<Login/>}/>
-        <Route path={'/profile'} element={<Profile/>}/>
+        <Route path={'/profile'} element={<Access redirect='/login'><Profile/></Access>}/>
       </Routes>
 
       {activeModal === 'basket' && <Basket/>}

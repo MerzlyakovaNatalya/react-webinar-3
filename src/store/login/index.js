@@ -44,7 +44,7 @@ class LoginState extends StoreModule {
           waiting: false
         }, 'Авторизация прошла успешно');
 
-        localStorage.setItem('token', json.result.token)
+         localStorage.setItem('token', json.result.token)
       } else {
         const errorMessage = json.error.data.issues[0].message;
         throw new Error(errorMessage);
@@ -103,6 +103,8 @@ class LoginState extends StoreModule {
    * Отмена авторизации
    */
   async signOut() {
+
+    localStorage.removeItem("token");
 
     const token = this.getState().token;
 
