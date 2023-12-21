@@ -1,0 +1,41 @@
+.CommentItem {
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .CommentItem-wrap-user {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  
+  .CommentItem-user {
+    margin-right: 10px;
+    font-weight: 700;
+  }
+  
+  .CommentItem-user_self {
+    font-weight: 700;
+    color: rgba(102, 102, 102, 1);
+
+  }
+  
+  .CommentItem-data {
+    color: #666666;
+  }
+  
+  .CommentItem-text {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+  
+  .CommentItem-answer {
+    border: none;
+    display: inline-block;
+    font-size: 12px;
+    background-color: transparent;
+    padding: 0;
+    color: #0087E9;
+    cursor: pointer;
+  }
