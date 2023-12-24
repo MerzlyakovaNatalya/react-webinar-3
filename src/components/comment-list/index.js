@@ -15,11 +15,15 @@ function CommentList({
   t }) {
   const cn = bem('CommentList');
 
+  const lastChildCommentIndex = comments.findLastIndex((comment) => comment.parent._id === activeCommentId);
+  const lastChildCommentId = lastChildCommentIndex === -1 ? activeCommentId : comments[lastChildCommentIndex]?._id;
+
   return (
     <ul className={cn()}>
       {comments.map((item) => {
         return (
           <CommentItem
+            lastChildCommentId={lastChildCommentId}
             comment={item}
             activeCommentId={activeCommentId}
             key={item._id}
@@ -37,6 +41,7 @@ function CommentList({
 }
 
 CommentList.PropTypes = {
+  // lastChildCommentId: PropTypes.string,
   comments: PropTypes.array,
   activeCommentId: PropTypes.string,
   userId: PropTypes.string,

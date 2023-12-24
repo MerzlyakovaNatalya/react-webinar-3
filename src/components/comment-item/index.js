@@ -6,6 +6,7 @@ import CommentForm from "../comment-form";
 import "./style.css";
 
 function CommentItem({
+  lastChildCommentId,
   comment,
   activeCommentId,
   userId,
@@ -17,11 +18,13 @@ function CommentItem({
 }) {
   const cn = bem("CommentItem");
 
+  const maxLevel = (comment.level <= 6 ? comment.level : 6)  * 30
+
   return (
     <li
       className={cn()}
       style={{
-        marginLeft: `${(comment.level <= 6 ? comment.level : 6) * 30}px`,
+        marginLeft: `${maxLevel}px`,
       }}
     >
       <div className={cn("wrap-user")}>
@@ -34,7 +37,7 @@ function CommentItem({
       <button className={cn("answer")} onClick={() => onAnswerClick(comment._id)}>
         {t("comments.answerComment")}
       </button>
-      {activeCommentId === comment._id && (
+      {lastChildCommentId === comment._id && (
         <CommentForm
           userId={userId}
           activeCommentId={activeCommentId}
@@ -50,6 +53,7 @@ function CommentItem({
 }
 
 CommentItem.propTypes = {
+  lastChildCommentId: PropTypes.string,
   comment: PropTypes.object,
   activeCommentId: PropTypes.string,
   userId: PropTypes.string,

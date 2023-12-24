@@ -1,4 +1,4 @@
-import {memo, useState, useCallback} from "react";
+import {memo, useState, useCallback, useEffect} from "react";
 import {useDispatch, useSelector as useSelectorRedux} from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import useSelector from "../../hooks/use-selector";
@@ -51,6 +51,14 @@ function CommentsContainer() {
 
   const tree = listToTree(selectRedux.comments, selectRedux.articleId);
   const newComments = treeToList(tree, (item, level) => ({...item, level}));
+
+  useEffect(() => {
+    const formElement = document.querySelector('.CommentForm_active');
+    const offsetY = formElement?.getBoundingClientRect().y + window.scrollY;
+    if (offsetY) {
+      window.scrollTo({top: offsetY - window.innerHeight / 2, behavior: 'instant'});
+    }
+  }, [activeCommentId]);
 
   return (
     <CommentLayout count={selectRedux.commentsCount} t={t}>
